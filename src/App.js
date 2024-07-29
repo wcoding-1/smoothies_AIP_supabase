@@ -1,24 +1,35 @@
-import logo from './logo.svg';
+import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
+import  Home from './pages/Home';
+import  Create from './pages/Create';
+import  Update from './pages/Update';
+// import SignUp from "./pages/SignUp";
+// import SignIn from "./pages/SignIn";
+// import LandingPage from "./pages/LandingPage";
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <BrowserRouter>
+        <div className='app'>
+            <nav>
+                <h1>Smoothies</h1>
+                <Link to="/" className='nav-link'>Home</Link>
+                <Link to="/create" className='nav-link'>create New Smoothie</Link>
+                {/*<Link to="/" className='nav-link'>Landing Page</Link>*/}
+            </nav>
+
+            <Routes>
+                {/*<Route path="/" element={<LandingPage />} />*/}
+                {/*<Route path="/signUp" element={<SignUp />} />*/}
+                {/*<Route path="/signIn" element={<SignIn />} />*/}
+                <Route path="/" element={<Home />} />
+                <Route path="/create" element={<Create />} />
+                <Route path="/:id" element={<Update />} />
+
+            </Routes>
+        </div>
+    </BrowserRouter>
   );
 }
 
